@@ -1,0 +1,116 @@
+# Rolling the Dice - V 1.0.0
+# Author: Dena, Rene
+# Last Modified: 5/17/17
+
+# _____________________________________Misc.________________________________________
+
+import random, datetime, sys
+
+# _____________________________________Functions____________________________________
+
+
+def Winner():
+    diceI = random.randint(1, 6)
+    diceII = random.randint(1, 6)
+    def Comps():
+        diceIV = random.randint(1, 6)
+        print('\nThe computers dice roll was {}'.format(diceII))
+    def Users():
+        diceIII = random.randint(1, 6)
+        print('\nUser! Your dice roll was {}'.format(diceI))
+    Users()
+    Comps()
+    if diceI > diceII:
+        print('\nAWESOME! YOU WON, COMGRATULATIONS!')
+        while True:
+            option = input('\nWould you like to PLAY AGAIN? "yes" OR "no": ')
+            if option == 'yes':
+                print('\nNICE! You\'ve selected to play again.')
+                print('\nHeasing to the MAIN CONSOLE now.')
+                print('\nLOADING...............')
+                Main()
+                break
+            elif option == 'no':
+                print('\nBUMMER! you\'ve select to end game. Sucks to see you go.')
+                print('\nHope you\'ve enjoyed and hope to see you back.')
+                print('\nYou\'ll now be kick from the script.')
+                print('\nLOADING...............')
+                print('\nYou have now been kick from script. Good day :)')
+                sys.exit()
+                break
+            else:
+                print('\mPlease only ENTER "yes" OR "no" too continue! >:|')
+    elif diceI < diceII:
+        print('\nSUCKS!! YOU LOST. COMPUTER CAME OUT ON TOP.......')
+        while True:
+            option = input('\nWould you like to PLAY AGAIN? "yes" OR "no": ')
+            if option == 'yes':
+                print('\nNICE! You\'ve selected to play again.')
+                print('\nHeasing to the MAIN CONSOLE now.')
+                print('\nLOADING...............')
+                Main()
+                break
+            elif option == 'no':
+                print('\nBUMMER! you\'ve select to end game. Sucks to see you go.')
+                print('\nHope you\'ve enjoyed and hope to see you back.')
+                print('\nYou\'ll now be kick from the script.')
+                print('\nLOADING...............')
+                print('\nYou have now been kick from script. Good day :)')
+                sys.exit()
+                break
+            else:
+                print('\mPlease only ENTER "yes" OR "no" too continue! >:|')
+    else:
+        print('\nWOW! IT WAS A TIE! LOOKS LIKE NO LOSER HERE.......')
+        while True:
+            option = input('\nWould you like to PLAY AGAIN? "yes" OR "no": ')
+            if option == 'yes':
+                print('\nNICE! You\'ve selected to play again.')
+                print('\nHeasing to the MAIN CONSOLE now.')
+                print('\nLOADING...............')
+                Main()
+                break
+            elif option == 'no':
+                print('\nBUMMER! you\'ve select to end game. Sucks to see you go.')
+                print('\nHope you\'ve enjoyed and hope to see you back.')
+                print('\nYou\'ll now be kick from the script.')
+                print('\nLOADING...............')
+                print('\nYou have now been kick from script. Good day :)')
+                sys.exit()
+                break
+            else:
+                print('\mPlease only ENTER "yes" OR "no" too continue! >:|')
+
+    
+def Main():
+    print('\n\t\t\tWelcome to the MAIN CONSOLE!')
+    print('\nThis is were all the magic will happen ;)')
+    while True:
+        choice = input('\nWhen ready to BEGIN, please ENTER "ready": ')
+        if choice == 'ready':
+            print('\nNice! Now rolling your dice.')
+            print('\nLOADING...............')
+            print('\n\t\t\tDONE!')
+            Winner()
+            break
+        else:
+            print('\nPlease only ENTER "ready:! >:|')
+                  
+def Intro():
+    print('\n\t\t\tWelcome to the "Rolling Dice" game!')
+    while True:
+        name = input('\nBefore we begin, what is your name?: ')
+        if name.isalpha():
+            print('\nAwesome! We may now contiune {}'.format(name.title()))
+            print('\nNow heading to the MAIN CONSOLE.')
+            print('\nLOADING...............')
+            Main()
+            break
+        else:
+            print('\nPlease only use characther a-z only! >:|')
+
+
+# _____________________________________Strictly Script______________________________
+
+Intro()
+
