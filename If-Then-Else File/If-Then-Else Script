@@ -1,0 +1,129 @@
+# If-Then-Else _V.1.0.0
+# Author: Dena, Rene
+# Last Modified: 5/3/17
+
+print('\n\t\t\tWelcome to "THE DECISION MAKING" script!')
+
+while True:
+    name = input('\nBefore we begin, what is your name?: ')
+    if name.isalpha():
+        print('\nAwesome! We may now begin {}.'.format(name.title()))
+        print('\nNow heading to the MAIN CONSOLE.')
+        print('\nLOADING..............')
+        break
+    else:
+        print('\nPlease only ENTER you name using a-z characters! >:|')
+
+def Main():
+    print('\n\t\t\tWelcome to the MAIN CONSOLE!')
+    print('\nIn begging, please look out your window.')
+    print('\n')
+    while True:
+        print('\nIs it currently raining?: ')
+        rain = input('\nPlease ENTER "yes" OR "no": ')
+        if rain == 'yes':
+            print('\nYou have stated the fact that it is indeed raining. Don\'t forget to bring your umbrella.')
+            while True:
+                print('\nNow look at you weather thermometer.')
+                temperature = int(input('\nWhat is the temperature?: '))
+                if temperature >= 70:
+                    print('\nYou have stated that the temperature is {}º'.format(temperature))
+                    print('\nThus, meaning it will be on the warmer side today.')
+                    print('\n+__________________________________________________________________________+')
+                    print('|Conclusively, be sure to bring an umbrella and leave the sweater at home:)|')
+                    print('+--------------------------------------------------------------------------+')
+                    print('\nHope this helps. Would you like to re-run the script?')
+                    while True:
+                        option = input('\nPlease ENTER "yes" or "no": ')
+                        if option == 'yes':
+                            print('\nAwesome! You\'ve selected "yes"! Let\'s now head back to the MAIN CONSOLE!')
+                            print('\nLOADING...............')
+                            Main()
+                            break
+                        elif option == 'no':
+                            print('\nSucks! You\'ve selected "no". Hate to see you go. Have a good day..')
+                            print('\nYou will now be kick off the script.')
+                            exit()
+                            break
+                        else:
+                            print('\nPlease only ENTER either "yes" OR "no"! >:|')
+                    break ## 
+                elif temperature < 70:
+                    print('\nYou have stated that the temperature is {}º'.format(temperature))
+                    print('\nThus, meaning it will be on the colder side today.')
+                    print('\n+____________________________________________________________________+')
+                    print('|Conclusively, be sure to bring an umbrella as well as your sweater:)|')
+                    print('+--------------------------------------------------------------------+')
+                    print('\nHope this helps. Would you like to re-run the script?')
+                    while True:
+                        option = input('\nPlease ENTER "yes" or "no": ')
+                        if option == 'yes':
+                            print('\nAwesome! You\'ve selected "yes"! Let\'s now head back to the MAIN CONSOLE!')
+                            print('\nLOADING...............')
+                            Main()
+                            break
+                        elif option == 'no':
+                            print('\nSucks! You\'ve selected "no". Hate to see you go. Have a good day..')
+                            print('\nYou will now be kick off the script.')
+                            exit()
+                            break
+                        else:
+                            print('\nPlease only ENTER either "yes" OR "no"! >:|')
+                    break
+            break
+        elif rain == 'no':
+            print('\nYou have stated the fact that it is indeed NOT raining. Don\'t forget to leave your umbrella at home.')
+            while True:
+                print('\nNow look at you weather thermometer.')
+                temperature = int(input('\nWhat is the temperature?: '))
+                if temperature >= 70:
+                    print('\nYou have stated that the temperature is {}º'.format(temperature))
+                    print('\nThus, meaning it will be on the warmer side today.')
+                    print('\n+__________________________________________________________________________+')
+                    print('|Conclusively, be sure to leave both your an umbrella and sweater at home:)|')
+                    print('+--------------------------------------------------------------------------+')
+                    print('\nHope this helps. Would you like to re-run the script?')
+                    while True:
+                        option = input('\nPlease ENTER "yes" or "no": ')
+                        if option == 'yes':
+                            print('\nAwesome! You\'ve selected "yes"! Let\'s now head back to the MAIN CONSOLE!')
+                            print('\nLOADING...............')
+                            Main()
+                            break
+                        elif option == 'no':
+                            print('\nSucks! You\'ve selected "no". Hate to see you go. Have a good day..')
+                            print('\nYou will now be kick off the script.')
+                            exit()
+                            break
+                        else:
+                            print('\nPlease only ENTER either "yes" OR "no"! >:|')
+                    break
+                elif temperature < 70:
+                    print('\nYou have stated that the temperature is {}º'.format(temperature))
+                    print('\nThus, meaning it will be on the colder side today.')
+                    print('\n+__________________________________________________________________________+')
+                    print('|Conclusively, be sure leave your umbrella at home, but bring your sweater:)|')
+                    print('+---------------------------------------------------------------------------+')
+                    print('\nHope this helps. Would you like to re-run the script?')
+                    while True:
+                        option = input('\nPlease ENTER "yes" or "no": ')
+                        if option == 'yes':
+                            print('\nAwesome! You\'ve selected "yes"! Let\'s now head back to the MAIN CONSOLE!')
+                            print('\nLOADING...............')
+                            Main()
+                            break
+                        elif option == 'no':
+                            print('\nSucks! You\'ve selected "no". Hate to see you go. Have a good day..')
+                            print('\nYou will now be kick off the script.')
+                            exit()
+                            break
+                        else:
+                            print('\nPlease only ENTER either "yes" OR "no"! >:|')
+                    break
+            break
+        else:
+            print('\nPlease only ENTER either "yes" OR "no" to continue! >:|')
+
+
+
+Main()
