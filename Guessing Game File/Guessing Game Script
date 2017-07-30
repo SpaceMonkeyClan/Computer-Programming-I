@@ -1,0 +1,65 @@
+# Number Guessing Game - V.1.0.0
+# Author: Dena, Rene
+# Date Modified: 4/24/17
+
+# ________________________Miscellaneous__________________________________
+
+import random
+
+# ________________________Functions______________________________________
+
+## Name Definition
+def users_name():
+    name = input('\nWelcome! In starting, what is your name?: ')
+    if len(name) > 0 and name.isalpha():
+        print('Well hello %s. We may now start.' % (name.upper()))
+        print('Now lauching MAIN CONSOLE.')
+        print('\nLOADING...............')  
+    else:
+        print('\nCANNOT contiune if space was left empty.')
+        print('Also, please be sure to ENTER your name using \
+    a-z characthers only.')
+        users_name()
+### Number Definition
+def secret_number():
+    secret_value = random.randint(0,4)
+    return secret_value
+
+#### Users Option I definition
+def end_game():
+    UserChoice = input('\nPlay Again? yes OR no?:')
+    if UserChoice == 'yes':
+       print('\nAwsome! Let us continue. Heading to the MAIN CONSOLE now.')
+       print('\nLOADING...............')
+       main()
+    elif UserChoice == 'no':
+        print('\nSucks to see you go. Hope you\'ve enjoyed.')
+        print('Thanks for playing :)')
+        print('You\'ve now been kicked.')
+    else:
+        print('\nOops...')
+        print('Please only type in "yes" or "no".')
+        end_game()
+
+##### Main Console Definition
+def main():
+    print('\n\t\t\tGUESSING GAME MAIN CONSOLE NOW LIVE!')
+    Computer_number = secret_number()
+    UserValue = int(input('\nGuess the secret number that ranges from 0-4:'))
+    if Computer_number == UserValue:
+        print("\nYou've guessed correctly!!!")
+        print('\nComputer Chose:', Computer_number)
+        end_game()
+    else:
+        print('\n Nope! Try Again.')
+        print('\nComputer Chose:', Computer_number)
+        end_game()
+
+# __________________________Strictly Script_________________________________
+
+print("\n")
+
+users_name()
+
+main()
+
