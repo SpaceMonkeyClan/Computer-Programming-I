@@ -1,0 +1,118 @@
+# Dependents Script - V.1.0.0
+# Author: Dena, Rene
+# Last Modified: 4/13/17
+
+#_________________________Micellanious_______________________
+
+
+
+#_________________________Functions__________________________
+
+def user_name():
+    name = input('\nIn starting, what is your name?: ')
+    if len(name) > 0 and name.isalpha():
+        print('\n\nAwsome.! We can now begin %s.' % name.upper())
+        print('\nLet\'s head to the MAIN CONSOLE now.')
+        print('\nLOADING...............')
+        main()
+    else:
+        print('\nPlease only enter your name using characthers a-z.')
+        user_name()
+
+def End_option():
+    print('\nOur work here is DONE! Would you like to re-run the script from scratch?')
+    users_choice = input('Please ENTER "yes" or "no":')
+    if users_choice == 'yes':
+    	print('\nAwesome! You\'ve selected "yes". Let\'s head to the MAIN CONSOLE now.')
+    	print('LOADING...............')
+    	main()
+    elif users_choice == 'no':
+    	print('\nYou\'ve selected "no". Sucks to see you go. Hope you\'ve enjoyed.')
+    	print('\nWe will now kick you from the script.')
+    	print('\nLOADING.............')
+    	print('\nYou have now been kicked. Enjoy your day!')
+    	print ('')
+    else:
+    	print('\nPlease ENTER either "yes" or "no" only.')
+    	End_option()
+
+def main():
+    print('\n\t\t\tWelcome to the MAIN CONSOLE!')
+    print('\n')
+    dependentsList = []
+    i=0
+    while 1:
+        i+=1
+        dependents = int(input('Enter number of DEPENDENTS for employee #%d OR if FINISHED, please type in "999": ' %i))
+        if dependents == 999:
+            break
+        dependentsList.append(dependents)
+    print('\n\t\t\tWelcome to the SUMMARY CONSOLE!')
+    print('\nLet\'s pull up the summary now.')
+    print('\nLOADING...............')
+    print('\n')
+    employee_cal = len(dependentsList)
+    print('\nYou have entered the number of DEPENDENTS for %d of your employees.' % (employee_cal))
+    print('\nHere is the "Dependents Accumulation Chart":')
+    zero = dependentsList.count(0)
+    one = dependentsList.count(1)
+    two = dependentsList.count(2)
+    three = dependentsList.count(3)
+    four = dependentsList.count(4)
+    five = dependentsList.count(5)
+    six = dependentsList.count(6)
+    seven = dependentsList.count(7)
+    eight = dependentsList.count(8)
+    nine= dependentsList.count(9)
+    ten = dependentsList.count(10)
+
+    Tzero = zero * 0
+    Tone = one * 1
+    Ttwo = two * 2
+    Tthree = three *3
+    Tfour = four *4
+    Tfive = five * 5
+    Tsix = six * 6
+    Tseven = seven * 7
+    Teight = eight * 8
+    Tnine= nine * 9
+    Tten = ten * 10
+
+    grand_Total = Tzero + Tone + Ttwo + Tthree + Tfour + Tfive + Tsix + Tseven + Teight + Tnine + Tten
+
+    print('\n')
+    print('\t\t\t+___________________________________________+')
+    print('\t\t\t|         DEPENDENTS ACCUMULATON CHART      |')
+    print('\t\t\t+-----------------+------------+------------+')
+    print('\t\t\t+---Dependents:---+---Count:---+---Total:---+')
+    print('\t\t\t|       0         |     %d      |     %d      |' % (zero, Tzero))
+    print('\t\t\t|       1         |     %d      |     %d      |' % (one, Tone))
+    print('\t\t\t|       2         |     %d      |     %d      |' % (two, Ttwo))
+    print('\t\t\t|       3         |     %d      |     %d      |' % (three, Tthree))
+    print('\t\t\t|       4         |     %d      |     %d      |' % (four, Tfour))
+    print('\t\t\t|       5         |     %d      |     %d      |' % (five, Tfive))
+    print('\t\t\t|       6         |     %d      |     %d      |' % (six, Tsix))
+    print('\t\t\t|       7         |     %d      |     %d      |' % (seven, Tseven))
+    print('\t\t\t|       8         |     %d      |     %d      |' % (eight, Teight))
+    print('\t\t\t|       9         |     %d      |     %d      |' % (nine, Tnine))
+    print('\t\t\t|       10        |     %d      |     %d      |' % (ten, Tten))
+    print('\t\t\t+_________________+____________+____________+')
+    print('\t\t\t|  Accumulation of dependents: |      %d   |' % (grand_Total))
+    print('\t\t\t+______________________________+____________+')
+    End_option()
+
+#_________________________Classes____________________________
+
+
+
+#_________________________Script_____________________________
+
+print('\n\t\t\tWelcome to the "Dependents Accumulation" script!')
+
+print('\n')
+
+user_name()
+
+main()
+
+
