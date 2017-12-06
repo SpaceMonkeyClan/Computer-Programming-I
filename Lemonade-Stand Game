@@ -1,0 +1,1236 @@
+# Lemonade Stand Game - V.1.8.0
+# Author: Dena, Rene
+# Last Modified: 5/16/16
+
+# _____________________Miscellaneous____________________________
+
+
+import random
+
+## Weather Randomization
+Forecast = ['RAIN', 'OVERCAST', 'SUNNY and CLEAR', 'HAZY', 'CLOUDY']
+Random_forecast = random.choice(Forecast)
+Random_temperature = random.randint(50, 99)
+Perm_forecast = Random_forecast
+Perm_temperature = Random_temperature
+
+
+## Day Simulation
+if 50 <= Perm_temperature < 60:
+	day = 'rain'
+elif 60 <= Perm_temperature < 70:
+	day = 'overcast'
+elif 70 <= Perm_temperature < 80:
+	day = 'hazy'
+elif 80 <= Perm_temperature < 90:
+	day = 'cloudy'
+else:
+	day = 'sunny'
+
+
+## Users Inventory
+Balance = 20.00
+Users_cups = 0
+Users_lemons = 0
+Users_sugar = 0
+Users_ice = 0
+
+
+## Inventory Available Prices
+Cup_prices = [0.80, 0.85, 0.95]
+Lemons_prices = [0.80, 0.94, 0.65]
+Sugar_prices = [0.63, 0.72, 0.79]
+Ice_prices = [0.81, 0.85, 0.89]
+
+
+## Cups Randomized Price
+Initial_cups = random.choice(Cup_prices)
+if Initial_cups == 0.80:
+	Fifty_cups = 1.13
+	One_hundred_cups = 1.50
+elif Initial_cups == 0.85:
+	Fifty_cups = 1.21
+	One_hundred_cups = 1.60
+else:
+	Fifty_cups = 1.35
+	One_hundred_cups = 1.71
+
+## Lemons Randomized Price
+Initial_lemons = random.choice(Lemons_prices)
+if Initial_lemons == 0.80:
+	Thirty_lemons = 1.74
+	SeventyFive_lemons = 3.76
+elif Initial_lemons == 0.94:
+	Thirty_lemons = 2.02
+	SeventyFive_lemons = 4.42
+else:
+	Thirty_lemons = 1.38
+	SeventyFive_lemons = 3.60
+
+## Sugar Randomized Price
+Initial_sugar = random.choice(Sugar_prices)
+if Initial_sugar == 0.63:
+	Twenty_sugar = 1.12
+	FortyEight_sugar = 1.77
+elif Initial_sugar == 0.72:
+	Twenty_sugar = 1.28
+	FortyEight_sugar = 2.03
+else:
+	Twenty_sugar = 1.40
+	FortyEight_sugar = 2.23
+
+## Ice Randomized Price
+Initial_ice = random.choice(Ice_prices)
+if Initial_ice == 0.81:
+	Two_Fifthy_ice = 1.44
+	FiveHundred_ice = 1.90
+elif Initial_ice == 0.85:
+	Two_Fifthy_ice = 1.51
+	FiveHundred_ice = 2.01
+else:
+	Two_Fifthy_ice = 1.57
+	FiveHundred_ice = 2.10
+
+
+# _____________________Definitions______________________________
+
+## Ending Module
+def End_script():
+	print('\n')
+
+## Game Help
+def LSG_help():
+        print('\n')
+        print('\n\t\t\tWelcome to the HELP MENU!')
+        print('\nHere, are all the answers to all your questions:')
+        Help = open('/Volumes/DENA #31/Computer Programming/Lemonade Stand Game/LSG TxT/LSGHelpGuide.txt', 'r')
+        print('\n')
+        print(Help.read())
+        Help.close()
+        print('\n')
+        while True:
+                User_choiceXI = input('\nWhen finished looking over the HELP MENU, please ENTER "done" so we can head back to your MAIN MENU: ')
+                if User_choiceXI == 'done':
+                        print('\nAwesome! Glad we can help.')
+                        print('\nNow hwading back to your MAIN MENU.')
+                        print('\nLOADING...............')
+                        Users_main_menu()
+                        break
+                else:
+                        print('\nPlease only ENTER "done".')
+
+
+## Boxed Introduction
+def Grand_intro():
+	print('\n')
+
+	print('\n\t\t\tWELCOME TO:')
+
+	print('\n')
+	print('+--------------+--------------+--------------+')
+	print('| ............ | ............ | ............ |')
+	print('| .0000000000. | .00......00. | .0000000000. |')
+	print('| .....00..... | .00......00. | .00......... |')
+	print('| .....00..... | .00......00. | .00......... |')
+	print('| .....00..... | .0000000000. | .0000000000. |')
+	print('| .....00..... | .00......00. | .00......... |')
+	print('| .....00..... | .00......00. | .00......... |')
+	print('| .....00..... | .00......00. | .0000000000. |')
+	print('+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+')
+	print('| ............ | ............ | ............ | ............ | ............ | ............ | ............ | ............ |')
+	print('| .00......... | .00000000000 | .00......00. | ...000000... | .00......00. | ...000000... | .00000000... | .0000000000. |')
+	print('| .00......... | .00......... | .0000..0000. | .00......00. | .00......00. | .00......00. | .00......00. | .00......... |')
+	print('| .00......... | .00......... | .00..00..00. | .00......00. | .0000....00. | .00......00. | .00......00. | .00......... |')
+	print('| .00......... | .00000000000 | .00..00..00. | .00......00. | .00..00..00. | .0000000000. | .00......00. | .0000000000. |')
+	print('| .00......... | .00......... | .00......00. | .00......00. | .00....0000. | .00......00. | .00......00. | .00......... |')
+	print('| .00......... | .00..........| .00......00. | .000.....00. | .00......00. | .00......00. | .00......00. | .00......... |')
+	print('| .00000000000 | .00000000000 | .00......00. | ...000000... | .00......00. | .00......00. | .00000000... | .0000000000. |')
+	print('+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+')
+	print('| ............ | ............ | ............ | ............ | ............ |')
+	print('| ...00000000. | .0000000000. | ...000000... | .00......00. | .00000000... |')
+	print('| .00......... | .....00..... | .00......00. | .00......00. | .00......00. |')
+	print('| .00......... | .....00..... | .00......00. | .0000....00. | .00......00. |')
+	print('| ...000000... | .....00..... | .0000000000. | .00..00..00. | .00......00. |')
+	print('| .........00. | .....00..... | .00......00. | .00....0000. | .00......00. |')
+	print('| .........00. | .....00..... | .00......00. | .00......00. | .00......00. |')
+	print('| .00000000... | .....00..... | .00......00. | .00......00. | .00000000... |')
+	print('+--------------+--------------+--------------+--------------+--------------+')
+	print('| ............ | ............ | ............ | ............ | ............ |')
+	print('| ...000000... | ...000000... | .00......00. | .0000000000. | ...000000... |')
+	print('| .00......00. | .00......00. | .0000..0000. | .00......... | ....0000.... |')
+	print('| .00......... | .00......00. | .00..00..00. | .00......... | .....00..... |')
+	print('| .00......... | .0000000000. | .00..00..00. | .0000000000. | .....00..... |')
+	print('| .00....0000. | .00......00. | .00......00. | .00......... | ............ |')
+	print('| .00......00. | .00......00. | .00......00. | .00......... | .....00..... |')
+	print('| ...000000... | .00......00. | .00......00. | .0000000000. | .....00..... |')
+	print('+--------------+--------------+--------------+--------------+--------------+')
+
+
+def Ice_menu():
+	global Balance, Users_ice
+	print('\n\t\t\tWelcome to the ICE CUBES PURCHASE MENU!')
+	print('\nHere, you can buy more ICE CUBES.')
+	print('\nYour INVENTORY currently consist of %s ICE CUBES.' % Users_ice)
+	print('\nSelect the amount of ICE CUBES you would like to buy.')
+	print('\n')
+	print('Here are your purchasing options:')
+	# Format for price randomization first
+	print('If you would like to buy 100 ICE CUBES for ${:.2f}, ENTER 1.'.format(Initial_ice))
+	print('If you would like to buy 250 ICE CUBES for ${:.2f}, ENTER 2.'.format(Two_Fifthy_ice))
+	print('If you would like to buy 500 ICE CUBES for ${:.2f}, ENTER 3.'.format(FiveHundred_ice))
+	print('\nIf you would like to head back to you INVENTORY MENU, please ENTER 4.')
+	print('\nHow many ICE CUBES would you like to buy?')
+	while True:
+		Ice_purchased = input('\nPlease ENTER 1,2, 3 or 4:')
+		if Ice_purchased == '1':
+			print('\n')
+			print('You have selected to purchase 100 ICE CUBES at a grand total of ${:.2f}.'.format(Initial_ice))
+			Balance = Balance - Initial_ice
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your ICE CUBES INVENTORY has now had an addition of +100 ICE CUBES.')
+			Users_ice += 100
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVVVVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVVVVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Ice_menu()
+					break
+				elif users_choiceVVVVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Ice_purchased == '2':
+			print('\n')
+			print('You have selected to purchase 250 ICE CUBES at a grand total of ${:.2f}.'.format(Two_Fifthy_ice))
+			Balance = Balance - Two_Fifthy_ice
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your ICE CUBES INVENTORY has now had an addition of +250 ICE CUBES.')
+			Users_ice += 250
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVVVVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVVVVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Ice_menu()
+					break
+				elif users_choiceVVVVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Ice_purchased == '3':
+			print('\n')
+			print('You have selected to purchase 500 ICE CUBES at a grand total of ${:.2f}.'.format(FiveHundred_ice))
+			Balance = Balance - FiveHundred_ice
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your ICE CUBES INVENTORY has now had an addition of +500 ICE CUBES.')
+			Users_ice += 500
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVVVVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVVVVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Ice_menu()
+					break
+				elif users_choiceVVVVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Ice_purchased == '4':
+			print('\n')
+			print('You have decided to head back to your INVENTORY MENU. Let\'s head there now.')
+			print('\nLOADING...............')
+			print('\n')
+			Users_main_menu()
+			break
+		else:
+			print('\nPlease only ENTER the promoted integers! >:/ ')
+			print('\nNow backtracking.')
+			print('\nLOADING................')
+
+
+def Sugar_menu():
+	global Balance, Users_sugar
+	print('\n\t\t\tWelcome to the CUPS OF SUGAR PURCHASE MENU!')
+	print('\nHere, you can buy more SUGAR.')
+	print('\nYour INVENTORY currently consist of {} SUGAR.'.format(Users_sugar))
+	print('\nSelect the amount of CUPS OF SUGAR you would like to buy.')
+	print('\n')
+	print('Here are your purchasing options:')
+	# Format for price randomization first
+	print('If you would like to buy 8 CUPS OF SUGAR for ${:.2f}, ENTER 1.'.format(Initial_sugar))
+	print('If you would like to buy 20 CUPS OF SUGAR for ${:.2f}, ENTER 2.'.format(Twenty_sugar))
+	print('If you would like to buy 48 CUPS OF SUGAR for ${:.2f}, ENTER 3.'.format(FortyEight_sugar))
+	print('\nIf you would like to head back to your INVENTORY MENU, please ENTER 4.')
+	print('\nHow many CUPS OF SUGAR would you like to buy?')
+	while True:
+		Sugar_purchased = input('\nPlease ENTER 1,2, 3 or 4:')
+		if Sugar_purchased == '1':
+			print('\n')
+			print('You have selected to purchase 8 CUPS OF SUGAR at a grand total of ${:.2f}.'.format(Initial_sugar))
+			Balance = Balance - Initial_sugar
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your CUPS OF SUGAR INVENTORY has now had an addition of +8 CUPS OF SUGAR.')
+			Users_sugar += 8
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVVVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVVVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Sugar_menu()
+					break
+				elif users_choiceVVVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Sugar_purchased == '2':
+			print('\n')
+			print('You have selected to purchase 20 CUPS OF SUGAR at a grand total of ${:.2f}.'.format(Twenty_sugar))
+			Balance = Balance - Twenty_sugar
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your CUPS OF SUGAR INVENTORY has now had an addition of +20 CUPS OF SUGAR.')
+			Users_sugar += 20
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVVVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVVVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Sugar_menu()
+					break
+				elif users_choiceVVVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Sugar_purchased == '3':
+			print('\n')
+			print('You have selected to purchase 48 CUPS OF SUGAR at a grand total of ${:.2f}.'.format(FortyEight_sugar))
+			Balance = Balance - FortyEight_sugar
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your CUPS OF SUGAR INVENTORY has now had an addition of +48 CUPS OF SUGAR.')
+			Users_sugar += 48
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVVVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVVVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Sugar_menu()
+					break
+				elif users_choiceVVVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Sugar_purchased == '4':
+			print('\n')
+			print('You have decided to head back to your INVENTORY MENU. Let\'s head there now.')
+			print('\nLOADING...............')
+			print('\n')
+			Users_main_menu()
+			break
+		else:
+			print('\nPlease only ENTER the promoted integers! >:/ ')
+			print('\nNow backtracking.')
+			print('\nLOADING................')
+
+
+def Overcast_day():
+	while True:
+		Users_choiceM = float(input('\nTaking the weather into consideration, please ENTER the \
+amount for which you would like to sell each CUP of LEMONADE for(Price must fall between 1-99¢): '))
+		if 1 <= Users_choiceM <= 99:
+			print('\nYou\'ve selected to sell each CUP of LEMONADE for %d¢.' % Users_choiceM)
+			break
+		else:
+			print('\nPlease ONLY ENTER a value number ranging from 1-99¢')
+	# Satisfaction
+	if 1 <= Users_choiceM <= 20:
+		satisfaction = random.randint(80, 100)
+	elif 20 < Users_choiceM <= 40:
+		satisfaction = random.randint(60, 80)
+	elif 40 < Users_choiceM <= 60:
+		satisfaction = random.randint(40, 60)
+	elif 60 < Users_choiceM <= 80:
+		satisfaction = random.randint(20, 40)
+	else:
+		satisfaction = random.randint(1, 20)
+	# Popularity
+	if 80 <= satisfaction <= 100:
+		popularity = random.randint(80, 100)
+	elif 60 <= satisfaction <= 80:
+		popularity = random.randint(60, 80)
+	elif 40 <= satisfaction <= 60:
+		popularity = random.randint(40, 60)
+	elif 20 <= satisfaction <= 40:
+		popularity = random.randint(20, 40)
+	else:
+		popularity = random.randint(1, 20)
+	random_customers = random.randint(20, 40)
+	rain_customers = random_customers
+	total_sales = rain_customers * Users_choiceM
+	while True:
+		Users_choiceIIV = input('\nLet us begin. Please ENTER "start" in order to begin the SIMULATION process: ')
+		if Users_choiceIIV == 'start':
+			print('\nSIMULATION will now begin. Good Luck!')
+			print('\n\t\t\tSIMULATION NOW IN PROGRESS:')
+			print('\nSIMULATION COMPLETION 35/100.....')
+			print('SIMULATION COMPLETION 55/100.....')
+			print('SIMULATION COMPLETION 67/100.....')
+			print('SIMULATION COMPLETION 82/100.....')
+			print('SIMULATION COMPLETION 98/100.....')
+			print('\nSIMULATION COMPLETE!')
+			print('\nNow taking you to your DAILY REPORT!')
+			print('\nLOADING...............')
+			print('\n\t\t\tWELCOME TO YOR DAILY REPORT:')
+			global Balance
+			global Users_cups
+			global Users_lemons
+			global Users_sugar
+			global Users_ice
+			Balance += total_sales
+			Users_cups -= rain_customers * 1
+			Users_lemons -= rain_customers * 4
+			Users_sugar -= rain_customers * 4
+			Users_ice -= rain_customers * 4
+			inventory_loss = rain_customers * 4
+			print('\nToday you had %d customers out of 40 potential customers.' % rain_customers)
+			if rain_customers >= 17:
+				print('Not bad for the current weather conditions. Good job!')
+			else:
+				print('Unfortunate. You could\'ve had a better day.')
+			print('\nYou\'ve obtained a SATISFACTION level of %d percent.' % satisfaction)
+			print('...')
+			print('In turn, this has given you a POPULARITY level of %d percent.' % popularity)
+			print('\nToday, you\'ve acquired a profit of: $%.2f' % total_sales)
+			print('\nYour INVENTORY has obtained a loss of {} PAPER CUPS and {} LEMONS, SUGAR CUBES, &nd ICE CUBES.'.format(rain_customers, inventory_loss))
+			while True:
+				end_day = input('\nPlease ENTER "done" to head back to your MAIN MENU: ')
+				if end_day == 'done':
+					print('\nHeading to your MAIN MENU now.')
+					print('\nLOADING...............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER "done".')
+			break
+		else:
+			print('\nPlease only ENTER "start" >:/ ')
+
+
+def Hazy_day():
+	while True:
+		Users_choiceM = float(input('\nTaking the weather into consideration, please ENTER the \
+amount for which you would like to sell each CUP of LEMONADE for(Price must fall between 1-99¢): '))
+		if 1 <= Users_choiceM <= 99:
+			print('\nYou\'ve selected to sell each CUP of LEMONADE for %d¢.' % Users_choiceM)
+			break
+		else:
+			print('\nPlease ONLY ENTER a value number ranging from 1-99¢')
+	# Satisfaction
+	if 1 <= Users_choiceM <= 20:
+		satisfaction = random.randint(80, 100)
+	elif 20 < Users_choiceM <= 40:
+		satisfaction = random.randint(60, 80)
+	elif 40 < Users_choiceM <= 60:
+		satisfaction = random.randint(40, 60)
+	elif 60 < Users_choiceM <= 80:
+		satisfaction = random.randint(20, 40)
+	else:
+		satisfaction = random.randint(1, 20)
+	# Popularity
+	if 80 <= satisfaction <= 100:
+		popularity = random.randint(80, 100)
+	elif 60 <= satisfaction <= 80:
+		popularity = random.randint(60, 80)
+	elif 40 <= satisfaction <= 60:
+		popularity = random.randint(40, 60)
+	elif 20 <= satisfaction <= 40:
+		popularity = random.randint(20, 40)
+	else:
+		popularity = random.randint(1, 20)
+	random_customers = random.randint(40, 60)
+	rain_customers = random_customers
+	Users_choiceMM = Users_choiceM / 100
+	total_sales = rain_customers * Users_choiceMM
+	while True:
+		Users_choiceIIV = input('\nLet us begin. Please ENTER "start" in order to begin the SIMULATION process: ')
+		if Users_choiceIIV == 'start':
+			print('\nSIMULATION will now begin. Good Luck!')
+			print('\n\t\t\tSIMULATION NOW IN PROGRESS:')
+			print('\nSIMULATION COMPLETION 35/100.....')
+			print('SIMULATION COMPLETION 55/100.....')
+			print('SIMULATION COMPLETION 67/100.....')
+			print('SIMULATION COMPLETION 82/100.....')
+			print('SIMULATION COMPLETION 98/100.....')
+			print('\nSIMULATION COMPLETE!')
+			print('\nNow taking you to your DAILY REPORT!')
+			print('\nLOADING...............')
+			print('\n\t\t\tWELCOME TO YOR DAILY REPORT:')
+			global Balance
+			global Users_cups
+			global Users_lemons
+			global Users_sugar
+			global Users_ice
+			Balance += total_sales
+			Users_cups -= rain_customers * 1
+			Users_lemons -= rain_customers * 4
+			Users_sugar -= rain_customers * 4
+			Users_ice -= rain_customers * 4
+			inventory_loss = rain_customers * 4
+			print('\nToday you had %d customers out of 60 potential customers.' % rain_customers)
+			if rain_customers >= 13:
+				print('Not bad for the current weather conditions. Good job!')
+			else:
+				print('Unfortunate. You could\'ve had a better day.')
+			print('\nYou\'ve obtained a SATISFACTION level of %d percent.' % satisfaction)
+			print('...')
+			print('In turn, this has given you a POPULARITY level of %d percent.' % popularity)
+			print('\nToday, you\'ve acquired a profit of: $%.2f' % total_sales)
+			print('\nYour INVENTORY has obtained a loss of {} PAPER CUPS and {} LEMONS, SUGAR CUBES, &nd ICE CUBES.'.format(rain_customers, inventory_loss))
+			while True:
+				end_day = input('\nPlease ENTER "done" to head back to your MAIN MENU: ')
+				if end_day == 'done':
+					print('\nHeading to your MAIN MENU now.')
+					print('\nLOADING...............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER "done".')
+			break
+		else:
+			print('\nPlease only ENTER "start" >:/ ')
+
+
+def Cloudy_day():
+	while True:
+		Users_choiceM = float(input('\nTaking the weather into consideration, please ENTER the \
+amount for which you would like to sell each CUP of LEMONADE for(Price must fall between 1-99¢): '))
+		if 1 <= Users_choiceM <= 99:
+			print('\nYou\'ve selected to sell each CUP of LEMONADE for %d¢.' % Users_choiceM)
+			break
+		else:
+			print('\nPlease ONLY ENTER a value number ranging from 1-99¢')
+	# Satisfaction
+	if 1 <= Users_choiceM <= 20:
+		satisfaction = random.randint(80, 100)
+	elif 20 < Users_choiceM <= 40:
+		satisfaction = random.randint(60, 80)
+	elif 40 < Users_choiceM <= 60:
+		satisfaction = random.randint(40, 60)
+	elif 60 < Users_choiceM <= 80:
+		satisfaction = random.randint(20, 40)
+	else:
+		satisfaction = random.randint(1, 20)
+	# Popularity
+	if 80 <= satisfaction <= 100:
+		popularity = random.randint(80, 100)
+	elif 60 <= satisfaction <= 80:
+		popularity = random.randint(60, 80)
+	elif 40 <= satisfaction <= 60:
+		popularity = random.randint(40, 60)
+	elif 20 <= satisfaction <= 40:
+		popularity = random.randint(20, 40)
+	else:
+		popularity = random.randint(1, 20)
+	random_customers = random.randint(60, 80)
+	rain_customers = random_customers
+	Users_choiceMM = Users_choiceM / 100
+	total_sales = rain_customers * Users_choiceMM
+	while True:
+		Users_choiceIIV = input('\nLet us begin. Please ENTER "start" in order to begin the SIMULATION process: ')
+		if Users_choiceIIV == 'start':
+			print('\nSIMULATION will now begin. Good Luck!')
+			print('\n\t\t\tSIMULATION NOW IN PROGRESS:')
+			print('\nSIMULATION COMPLETION 35/100.....')
+			print('SIMULATION COMPLETION 55/100.....')
+			print('SIMULATION COMPLETION 67/100.....')
+			print('SIMULATION COMPLETION 82/100.....')
+			print('SIMULATION COMPLETION 98/100.....')
+			print('\nSIMULATION COMPLETE!')
+			print('\nNow taking you to your DAILY REPORT!')
+			print('\nLOADING...............')
+			print('\n\t\t\tWELCOME TO YOR DAILY REPORT:')
+			global Balance
+			global Users_cups
+			global Users_lemons
+			global Users_sugar
+			global Users_ice
+			Balance += total_sales
+			Users_cups -= rain_customers * 1
+			Users_lemons -= rain_customers * 4
+			Users_sugar -= rain_customers * 4
+			Users_ice -= rain_customers * 4
+			inventory_loss = rain_customers * 4
+			print('\nToday you had %d customers out of 80 potential customers.' % rain_customers)
+			if rain_customers >= 13:
+				print('Not bad for the current weather conditions. Good job!')
+			else:
+				print('Unfortunate. You could\'ve had a better day.')
+			print('\nYou\'ve obtained a SATISFACTION level of %d percent.' % satisfaction)
+			print('...')
+			print('In turn, this has given you a POPULARITY level of %d percent.' % popularity)
+			print('\nToday, you\'ve acquired a profit of: $%.2f' % total_sales)
+			print('\nYour INVENTORY has obtained a loss of {} PAPER CUPS and {} LEMONS, SUGAR CUBES, &nd ICE CUBES.'.format(rain_customers, inventory_loss))
+			while True:
+				end_day = input('\nPlease ENTER "done" to head back to your MAIN MENU: ')
+				if end_day == 'done':
+					print('\nHeading to your MAIN MENU now.')
+					print('\nLOADING...............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER "done".')
+			break
+		else:
+			print('\nPlease only ENTER "start" >:/ ')
+
+
+def Sunny_day():
+	while True:
+		Users_choiceM = float(input('\nTaking the weather into consideration, please ENTER the \
+amount for which you would like to sell each CUP of LEMONADE for(Price must fall between 1-99¢): '))
+		if 1 <= Users_choiceM <= 99:
+			print('\nYou\'ve selected to sell each CUP of LEMONADE for %d¢.' % Users_choiceM)
+			break
+		else:
+			print('\nPlease ONLY ENTER a value number ranging from 1-99¢')
+	# Satisfaction
+	if 1 <= Users_choiceM <= 20:
+		satisfaction = random.randint(80, 100)
+	elif 20 < Users_choiceM <= 40:
+		satisfaction = random.randint(60, 80)
+	elif 40 < Users_choiceM <= 60:
+		satisfaction = random.randint(40, 60)
+	elif 60 < Users_choiceM <= 80:
+		satisfaction = random.randint(20, 40)
+	else:
+		satisfaction = random.randint(1, 20)
+	# Popularity
+	if 80 <= satisfaction <= 100:
+		popularity = random.randint(80, 100)
+	elif 60 <= satisfaction <= 80:
+		popularity = random.randint(60, 80)
+	elif 40 <= satisfaction <= 60:
+		popularity = random.randint(40, 60)
+	elif 20 <= satisfaction <= 40:
+		popularity = random.randint(20, 40)
+	else:
+		popularity = random.randint(1, 20)
+	random_customers = random.randint(80, 100)
+	rain_customers = random_customers
+	Users_choiceMM = Users_choiceM / 100
+	total_sales = rain_customers * Users_choiceMM
+	while True:
+		Users_choiceIIV = input('\nLet us begin. Please ENTER "start" in order to begin the SIMULATION process: ')
+		if Users_choiceIIV == 'start':
+			print('\nSIMULATION will now begin. Good Luck!')
+			print('\n\t\t\tSIMULATION NOW IN PROGRESS:')
+			print('\nSIMULATION COMPLETION 35/100.....')
+			print('SIMULATION COMPLETION 55/100.....')
+			print('SIMULATION COMPLETION 67/100.....')
+			print('SIMULATION COMPLETION 82/100.....')
+			print('SIMULATION COMPLETION 98/100.....')
+			print('\nSIMULATION COMPLETE!')
+			print('\nNow taking you to your DAILY REPORT!')
+			print('\nLOADING...............')
+			print('\n\t\t\tWELCOME TO YOR DAILY REPORT:')
+			global Balance
+			global Users_cups
+			global Users_lemons
+			global Users_sugar
+			global Users_ice
+			Balance += total_sales
+			Users_cups -= rain_customers * 1
+			Users_lemons -= rain_customers * 4
+			Users_sugar -= rain_customers * 4
+			Users_ice -= rain_customers * 4
+			inventory_loss = rain_customers * 4
+			print('\nToday you had %d customers out of 100 potential customers.' % rain_customers)
+			if rain_customers >= 13:
+				print('Not bad for the current weather conditions. Good job!')
+			else:
+				print('Unfortunate. You could\'ve had a better day.')
+			print('\nYou\'ve obtained a SATISFACTION level of %d percent.' % satisfaction)
+			print('...')
+			print('In turn, this has given you a POPULARITY level of %d percent.' % popularity)
+			print('\nToday, you\'ve acquired a profit of: $%.2f' % total_sales)
+			print('\nYour INVENTORY has obtained a loss of {} PAPER CUPS and {} LEMONS, SUGAR CUBES, &nd ICE CUBES.'.format(rain_customers, inventory_loss))
+			while True:
+				end_day = input('\nPlease ENTER "done" to head back to your MAIN MENU": ')
+				if end_day == 'done':
+					print('\nHeading to your MAIN MENU now.')
+					print('\nLOADING...............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER "done".')
+			break
+		else:
+			print('\nPlease only ENTER "start" >:/ ')
+
+
+def Rain_day():
+	while True:
+		Users_choiceM = float(input('\nTaking the weather into consideration, please ENTER the \
+amount for which you would like to sell each CUP of LEMONADE for(Price must fall between 1-99¢): '))
+		if 1 <= Users_choiceM <= 99:
+			print('\nYou\'ve selected to sell each CUP of LEMONADE for %d¢.' % Users_choiceM)
+			break
+		else:
+			print('\nPlease ONLY ENTER a value number ranging from 1-99¢')
+	# Satisfaction
+	if 1 <= Users_choiceM <= 20:
+		satisfaction = random.randint(80, 100)
+	elif 20 < Users_choiceM <= 40:
+		satisfaction = random.randint(60, 80)
+	elif 40 < Users_choiceM <= 60:
+		satisfaction = random.randint(40, 60)
+	elif 60 < Users_choiceM <= 80:
+		satisfaction = random.randint(20, 40)
+	else:
+		satisfaction = random.randint(1, 20)
+	# Popularity
+	if 80 <= satisfaction <= 100:
+		popularity = random.randint(80, 100)
+	elif 60 <= satisfaction <= 80:
+		popularity = random.randint(60, 80)
+	elif 40 <= satisfaction <= 60:
+		popularity = random.randint(40, 60)
+	elif 20 <= satisfaction <= 40:
+		popularity = random.randint(20, 40)
+	else:
+		popularity = random.randint(1, 20)
+	random_customers = random.randint(5, 20)
+	rain_customers = random_customers
+	Users_choiceMM = Users_choiceM / 100
+	total_sales = rain_customers * Users_choiceMM
+	while True:
+		Users_choiceIIV = input('\nLet us begin. Please ENTER "start" in order to begin the SIMULATION process: ')
+		if Users_choiceIIV == 'start':
+			print('\nSIMULATION will now begin. Good Luck!')
+			print('\n\t\t\tSIMULATION NOW IN PROGRESS:')
+			print('\nSIMULATION COMPLETION 35/100.....')
+			print('SIMULATION COMPLETION 55/100.....')
+			print('SIMULATION COMPLETION 67/100.....')
+			print('SIMULATION COMPLETION 82/100.....')
+			print('SIMULATION COMPLETION 98/100.....')
+			print('\nSIMULATION COMPLETE!')
+			print('\nNow taking you to your DAILY REPORT!')
+			print('\nLOADING...............')
+			print('\n\t\t\tWELCOME TO YOR DAILY REPORT:')
+			global Balance
+			global Users_cups
+			global Users_lemons
+			global Users_sugar
+			global Users_ice
+			Balance += total_sales
+			Users_cups -= rain_customers * 1
+			Users_lemons -= rain_customers * 4
+			Users_sugar -= rain_customers * 4
+			Users_ice -= rain_customers * 4
+			inventory_loss = rain_customers * 4
+			print('\nToday you had %d customers out of 20 potential customers.' % rain_customers)
+			if rain_customers >= 13:
+				print('Not bad for the current weather conditions. Good job!')
+			else:
+				print('Unfortunate. You could\'ve had a better day.')
+			print('\nYou\'ve obtained a SATISFACTION level of %d percent.' % satisfaction)
+			print('...')
+			print('In turn, this has given you a POPULARITY level of %d percent.' % popularity)
+			print('\nToday, you\'ve acquired a profit of: $%.2f' % total_sales)
+			print('\nYour INVENTORY has obtained a loss of {} PAPER CUPS and {} LEMONS, SUGAR CUBES, &nd ICE CUBES.'.format(rain_customers, inventory_loss))
+			while True:
+				end_day = input('\nPlease ENTER "done" to head back to your MAIN MENU: ')
+				if end_day == 'done':
+					print('\nHeading to your MAIN MENU now.')
+					print('\nLOADING...............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER "done".')
+			break
+		else:
+			print('\nPlease only ENTER "start" >:/ ')
+
+
+def Play_menu():
+	print('\n\t\t\tWelcome to the PLAY MENU!')
+	print('\nHere, we will SIMULATE your DAY taking all kinds of aspects into account, but before we \
+can do so, we need you to firstly set up your sale price for each CUP of LEMONADE.')
+	print('\nOur satellites predicts a forecast of %s, with a temperature of %s.' % (Random_forecast, Random_temperature))
+	if day == 'rain':
+		Rain_day()
+	elif day == 'overcast':
+		Overcast_day()
+	elif day == 'hazy':
+		Hazy_day()
+	elif day == 'cloudy':
+		Cloudy_day()
+	else:
+		Sunny_day()
+
+
+## Lemons Purchase Menu
+def Lemons_menu():
+	global Balance, Users_lemons
+	print('\n\t\t\tWelcome to the LEMONS PURCHASE MENU!')
+	print('\nHere, you can buy more LEMONS.')
+	print('\nYour INVENTORY currently consist of {} LEMONS.'.format(Users_lemons))
+	print('\nSelect the amount of LEMONS you would like to buy.')
+	print('\n')
+	print('Here are your purchasing options:')
+	print('If you would like to buy 10 LEMONS for ${:.2f}, ENTER 1.'.format(Initial_lemons))
+	print('If you would like to buy 30 LEMONS for ${:.2f}, ENTER 2.'.format(Thirty_lemons))
+	print('If you would like to buy 75 LEMONS for ${:.2f}, ENTER 3.'.format(SeventyFive_lemons))
+	print('\nIf you would like to head back to you INVENTORY MENU, please ENTER 4.')
+	print('\nHow many LEMONS would you like to buy?')
+	while True:
+		Lemons_purchased = input('\nPlease ENTER 1,2, 3 or 4:')
+		if Lemons_purchased == '1':
+			print('\n')
+			print('You have selected to purchase 10 LEMONS at a grand total of ${:.2f}.'.format(Initial_lemons))
+			Balance = Balance - Initial_lemons
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your LEMONS INVENTORY has now had an addition of +10 LEMONS.')
+			Users_lemons += 10
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Lemons_menu()
+					break
+				elif users_choiceVVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Lemons_purchased == '2':
+			print('\n')
+			print('You have selected to purchase 30 LEMONS at a grand total of ${:.2f}.'.format(Thirty_lemons))
+			Balance = Balance - Thirty_lemons
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your LEMONS INVENTORY has now had an addition of +30 LEMONS.')
+			Users_lemons += 30
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Lemons_menu()
+					break
+				elif users_choiceVVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Lemons_purchased == '3':
+			print('\n')
+			print('You have selected to purchase 75 LEMONS at a grand total of ${:.2f}.'.format(SeventyFive_lemons))
+			Balance = Balance - SeventyFive_lemons
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your LEMONS INVENTORY has now had an addition of +75 LEMONS.')
+			Users_lemons += 75
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Lemons_menu()
+					break
+				elif users_choiceVVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Lemons_purchased == '4':
+			print('\n')
+			print('You have decided to head back to your INVENTORY MENU. Let\'s head there now.')
+			print('\nLOADING...............')
+			print('\n')
+			Users_main_menu()
+			break
+		else:
+			print('\nPlease only ENTER the promoted integers! >:/ ')
+			print('\nNow backtracking.')
+			print('\nLOADING................')
+
+
+## Paper Cups Purchase Menu
+def Cups_menu():
+	global Balance, Users_cups
+	print('\n\t\t\tWelcome to the PAPER CUPS PURCHASE MENU!')
+	print('\nHere, you can buy more PAPER CUPS.')
+	print('\nYour INVENTORY currently consist of {} PAPER CUPS.'.format(Users_cups))
+	print('\nSelect the amount of PAPER CUPS you would like to buy.')
+	print('\n')
+	print('Here are your purchasing options:')
+	print('If you would like to buy 25 PAPER CUPS for ${:.2f}, ENTER 1.'.format(Initial_cups))
+	print('If you would like to buy 50 PAPER CUPS for ${:.2f}, ENTER 2.'.format(Fifty_cups))
+	print('If you would like to buy 100 PAPER CUPS for ${:.2f}, ENTER 3.'.format(One_hundred_cups))
+	print('\nIf you would like to head back to you INVENTORY MENU, please ENTER 4.')
+	print('\nHow many PAPER CUPS would you like to buy?')
+	while True:
+		Cups_purchased = input('\nPlease ENTER 1,2, 3 or 4:')
+		if Cups_purchased == '1':
+			print('\n')
+			print('You have selected to purchase 25 PAPER CUPS at a grand total of ${:.2f}.'.format(Initial_cups))
+			Balance = Balance - Initial_cups
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your PAPER CUP INVENTORY has now had an addition of +25 PAPER CUPS.')
+			Users_cups += 25
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Cups_menu()
+					break
+				elif users_choiceVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+					break
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Cups_purchased == '2':
+			print('\n')
+			print('You have selected to purchase 50 PAPER CUPS at a grand total of ${:.2f}.'.format(Fifty_cups))
+			Balance = Balance - Fifty_cups
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your PAPER CUP INVENTORY has now had an addition of +50 PAPER CUPS.')
+			Users_cups += 50
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Cups_menu()
+					break
+				elif users_choiceVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Cups_purchased == '3':
+			print('\n')
+			print('You have selected to purchase 100 PAPER CUPS at a grand total of ${:.2f}.'.format(One_hundred_cups))
+			Balance = Balance - One_hundred_cups
+			print('Your current balance is now: ${:.2f}'.format(Balance))
+			print('Your PAPER CUP INVENTORY has now had an addition of +100 PAPER CUPS.')
+			Users_cups += 100
+			pass
+			print('\nYour purchase was completed, however, you now have the option to PURCHASE MORE (or) head back to the MAIN MENU.')
+			print('\nIf you would like to PURCHASE MORE, please enter "1".')
+			print('If you would like to head to the MAIN MENU, please enter "2".')
+			while True:
+				users_choiceVV = input('\nPlease ENTER 1 or 2:')
+				if users_choiceVV == '1':
+					print('\nYou\'ve selected to PURCHASE MORE. Working my magic.....')
+					print('\nLOADING..............')
+					Cups_menu()
+					break
+				elif users_choiceVV == '2':
+					print('\nYou\'ve selected to head back to the MAIN MENU,')
+					print('\nLet\'s head there now.')
+					print('\nLOADING..............')
+					Users_main_menu()
+				else:
+					print('\nPlease only ENTER the the prompted integers. >:|')
+		elif Cups_purchased == '4':
+			print('\n')
+			print('You have decided to head back to your INVENTORY MENU. Let\'s head there now.')
+			print('\nLOADING...............')
+			print('\n')
+			Users_main_menu()
+			break
+		else:
+			print('\nPlease only ENTER the prompted integers! >:/ ')
+			print('\nNow backtracking.')
+			print('\nLOADING................')
+
+
+## Purchasing Menu
+def Purchasing_menu():
+	print('\n\t\t\tWelcome to the PURCHASING MENU!')
+	print('\nHere you can stock up your INVENTORY, so let\'s STOCK UP.')
+	print('\nStock INVENTORY:')
+	print('To purchase more PAPER CUPS, please ENTER "1".')
+	print('To purchase more LEMONS, please ENTER "2".')
+	print('To purchase more CUPS of SUGAR, ENTER "3".')
+	print('To purchase more ICE CUBES, please ENTER "4".')
+	print('\nTo head back to your MAIN MENU, please ENTER "5".')
+	while True:
+		User_choiceIV = input('\nPlease ENTER 1, 2, 3, 4 or 5:')
+		if User_choiceIV == '1':
+			print('\nYou\'ve decided to buy more PAPER CUPS.')
+			print('Let\'s head to the PAPER CUP PURCHASE MENU now.')
+			print('\nLOADING...............')
+			Cups_menu()
+			break
+		elif User_choiceIV == '2':
+			print('\nYou\'ve decided to buy more LEMONS.')
+			print('Let\'s head to the LEMONS PURCHASE MENU now.')
+			print('\nLOADING...............')
+			Lemons_menu()
+			break
+		elif User_choiceIV == '3':
+			print('\nYou\'ve decided to buy more CUPS OF SUGAR.')
+			print('Let\'s head to the CUPS OF SUGAR PURCHASE MENU now.')
+			print('\nLOADING...............')
+			Sugar_menu()
+			break
+		elif User_choiceIV == '4':
+			print('\nYou\'ve decided to buy more ICE CUBES.')
+			print('Let\'s head to the ICE CUBES PURCHASE MENU now.')
+			print('\nLOADING...............')
+			Ice_menu()
+			break
+		elif User_choiceIV == '5':
+			print('\nYou\'ve decided to head back to your INVENTORY.')
+			print('Let\'s head there now.')
+			print('LOADING.................')
+			Users_main_menu()
+			break
+		else:
+			print('\nPlease only ENTER the prompted integers! >:/ ')
+			print('\nNow backtracking.')
+			print('\nLOADING................')
+
+
+## Bankruptcy Menu
+def Season_report():
+	total_income = 0
+	total_expenses = 0
+	net_gain = total_income + total_expenses
+	print('\n\t\t\tWelcome to your END of SEASON REPORT!:')
+	print('\n')
+	print('TOTAL INCOME:    ${:.2f}'.format(total_income))
+	print('TOTAL EXPENSES:  ${:.2f}'.format(total_expenses))
+	# Need to complete "Liquidated" variable
+	# print('LIQUIDATED INVENTORY VALUE: {}'.format())
+	print('_____________________')
+	print('NET PROFIT/LOSS: ${:.2f}'.format(net_gain))
+	if net_gain >= 0:
+		print('\nAwesome! You went positive. :)')
+		print('\nCONGRATULATIONS!!!')
+	else:
+		print('\nSucks! You wen negative. :|')
+	while True:
+		play_again = input('\nWould you like to PLAY AGAIN? Please ENTER "yes" or "no": ')
+		if play_again == 'yes':
+			print('\nYou\'ve selected to PLAY AGAIN.')
+			print('\nHeading to the MAIN CONSOLE now.')
+			print('\nLOADING...............')
+			Main_console()
+			break
+		elif play_again == 'no':
+			print('\nYou\'ve decided you would not like to play again. Blows! :|')
+			print('\nHope you enjoyed and hope to see you back soon.')
+			print('\nWe will now kick you from script.')
+			print('\nLOADING...............')
+			print('\nYou have now been kicked from script.')
+			print('\nGOOD DAY! :)')
+			End_script()
+			break
+		else:
+			print('\nPlease only ENTER "yes" (or) "no"! >:|')
+
+## Users Home Menu
+def Users_main_menu():
+	print('\n\t\t\tWelcome to your MAIN MENU!')
+	print('\nOur satellites predicts a forecast of %s, with a temperature of %s.' % (Random_forecast, Random_temperature))
+	print('\nYour current BALANCE is: $%.2f' % Balance)
+	print('\nYour current INVENTORY consist of:')
+	print('%s PAPER CUPS' % Users_cups)
+	print('%s LEMONS' % Users_lemons)
+	print('%s CUPS OF SUGAR' % Users_sugar)
+	print('%s ICE CUBES' % Users_ice)
+	print('\nIf you would like to head to the PURCHASING MENU to stock up, please ENTER "1".')
+	print('\nIf you would like to start your day and PLAY, please ENTER "2"')
+	print('\nIf you would like to head to the HELP MENU, please ENTER "3".')
+	print('If you would like to file for BANKRUPTCY, please ENTER "4".')
+	while True:
+		User_choiceII = input('\nPlease ENTER 1, 2, 3 or 4:')
+		if User_choiceII == "1":
+			print('\nYou\'ve decided to head to the PURCHASING MENU. Let\'s head there now.')
+			print('\nLOADING...............')
+			Purchasing_menu()
+			break
+		elif User_choiceII == "2":
+			print('\nYou\'ve decided to start you day. Let\'s head to the PLAY MENU now.')
+			print('\nLOADING...............')
+			Play_menu()
+			break
+		elif User_choiceII == "3":
+			print('\nYou\'ve decided to head to the HELP MENU. Let\'s head there now.')
+			print('\nLOADING...............')
+			LSG_help()
+			break
+			while True:
+				User_choiceIII = input('\nWhen finished looking over our HELP GUIDE, please ENTER "done" so we can head back to your INEVENTORY MENU:')
+				if User_choiceIII == 'done':
+					print('\nAwesome!. Glad we can HELP. We can now head to your INVENTORY MENU.')
+					print('Let\'s head there now.')
+					print('\nLOADING...............')
+					Users_main_menu()
+					break
+				else:
+					print('Please only ENTER "done".')
+		elif User_choiceII == "4":
+			print('\nYou\'ve now decided to file for BANKRUPTCY. That\'s very unfortunate.')
+			print('\nWe will now take you to your END of SEASON REPORT.')
+			print('Let\'s head there now.')
+			print('\nLOADING...............')
+			Season_report()  # Need to complete this definition
+			break
+		else:
+			print('\nPlease only ENTER the integers prompted too........')
+
+
+## Main Console
+def Main_console():
+	print('\n\t\t\tWelcome to the MAIN CONSOLE:')
+	print('This is were you input how long you would like to play for in respects to "Days".')
+	while True:
+		Play_days = input('\nIn starting please ENTER "7", "14", or "30" depending on how many days you would like to play for:')
+		if Play_days == '7':
+			print('\nYou have selected to play for 7 days.')
+			print('Let\'s begin.')
+			print('\nLOADING...............')
+			Users_main_menu()
+			break
+		elif Play_days == '14':
+			print('\nYou have selected to play for 14 days.')
+			print('Let\'s begin.')
+			print('\nLOADING...............')
+			Users_main_menu()
+			break
+		elif Play_days == '30':
+			print('\nYou have selected to play for 30 days.')
+			print('Let\'s begin.')
+			print('\nLOADING...............')
+			Users_main_menu()
+			break
+		else:
+			print('\nPlease only ENTER one of the promoted integers! >:|')
+
+
+# _____________________Strictly Script________________________________
+
+
+Grand_intro()
+
+
+while True:
+	name = input('\nBefore we begin, what is your name?:')
+	if name.isalpha():
+		print('\nAwesome! We can now begin {}.'.format(name.title()))
+		break
+	else:
+		print('\nCANNOT continue if space was left empty.')
+		print('Also, please be sure to ENTER your name using a-z characters only.')
+
+
+print('\nIn beginning, here are the INSTRUCTIONS:')
+print('')
+
+Intro = open('/Volumes/DENA #31/Computer Programming/Lemonade Stand Game/LSG TxT/LSGIntroduction.txt', 'r')
+print(Intro.read())
+Intro.close()
+
+print('')
+while True:
+	User_choice = input('\nWhen finished reviewing the INSTRUCTIONS, ENTER "done":')
+	if User_choice == 'done':
+		print('\nAwesome!. Now that you\'ve acquired a better understanding of how "The Lemonade Stand Game" works, we can now head to the MAIN CONSOLE.')
+		print('Let\'s head there now {}.'.format(name.title()))
+		print('\nLOADING...............')
+		break
+	else:
+		print('Please only ENTER "done".')
+
+
+Main_console()
+
+
+
+
